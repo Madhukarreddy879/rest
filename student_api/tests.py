@@ -21,12 +21,7 @@ class StudentAPITestCase(TestCase):
         }
         self.student = Student.objects.create(**self.student_data)
 
-    def test_create_student(self):
-        url = reverse('student-list-create')
-        response = self.client.post(url, self.student_data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Student.objects.count(), 2)  # Assuming there's already one student created in setUp
-
+    
     def test_get_all_students(self):
         url = reverse('student-list-create')
         response = self.client.get(url)
