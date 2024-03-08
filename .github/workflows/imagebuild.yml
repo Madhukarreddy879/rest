@@ -23,4 +23,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/doktet:${{github.sha}}
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/restapi:${{github.sha}}
