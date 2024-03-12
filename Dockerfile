@@ -1,15 +1,30 @@
+# Use an official Python runtime as a parent image
 FROM python:3.8
 
-# Allows docker to cache installed dependencies between builds
-COPY requirements.txt requirements.txt
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        gcc \
+        python3-dev \
+        libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Mounts the application code to the image
-COPY . code
-WORKDIR /code
+# Copy the current directory contents into the container at /app
+COPY . /app/
 
+# Expose the port the app runs on
 EXPOSE 8000
 
-# runs the production server
-ENTRYPOINT ["python", "manage.py"]
-CMD ["runserver", "0.0.0.0:8000"] 
+# Run the Django app
+CMD ["python manage.py runserver 0.0.0.0:8000"]
