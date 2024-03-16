@@ -29,3 +29,6 @@ spec:
               name: postgres-credentials
               key: password
       restartPolicy: Always
+
+       - name: POSTGRES_HOST
+        value: postgres-service
