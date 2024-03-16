@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: restapi
-        image: madhusnvak/restfinal:latest
+        image: madhusnvak/api:latest
         env:
         - name: POSTGRES_USER
           valueFrom:
