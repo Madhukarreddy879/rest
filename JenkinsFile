@@ -3,14 +3,14 @@ pipeline {
     
     environment {
         DOCKER_IMAGE = 'madhusnv/django'
-        DOCKERFILE_PATH = 'Dockerfile'
+        
     }
 
     stages {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build(DOCKER_IMAGE, "-f ${DOCKERFILE_PATH} .")
+                    docker.build(DOCKER_IMAGE)
                 }
             }
         }
