@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         DOCKER_CREDENTIALS = credentials('docker-hub-credentials-id')
-        DOCKER_IMAGE = 'madhusnv/docker'
-        DOCKERFILE_PATH = 'rest/Dockerfile'
+        DOCKER_IMAGE = 'madhusnv/django'
+        DOCKERFILE_PATH = 'Dockerfile'
     }
 
     stages {
