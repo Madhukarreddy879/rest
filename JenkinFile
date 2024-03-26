@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials-id')
+        DOCKER_IMAGE = 'madhusnv/docker'
+        DOCKERFILE_PATH = 'rest/Dockerfile'
+    }
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build(DOCKER_IMAGE, "-f ${DOCKERFILE_PATH} .")
+                }
+            }
+        }
+    }
+}
