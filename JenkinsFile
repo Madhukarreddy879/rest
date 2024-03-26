@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_CREDENTIALS = credentials('docker-hub-credentials-id')
         DOCKER_IMAGE = 'madhusnv/django'
         DOCKERFILE_PATH = 'Dockerfile'
     }
